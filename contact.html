@@ -7,31 +7,32 @@
 <meta name="description" content="Get in touch with Nafeesa Khan, UX researcher and designer.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+
 <header>
   <nav class="wrap">
-    <a href="index.html" class="wordmark">N. Khan <span>/ UX research</span></a>
+    <a href="index.html" class="wordmark" data-magnetic>N. Khan <span>/ UX research</span></a>
     <ul class="navlinks">
-      <li><a href="index.html#cases">Case studies</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html" class="current">Contact</a></li>
-      <li><a href="resume.html">Resume</a></li>
+      <li><a href="index.html#cases" data-magnetic>Case studies</a></li>
+      <li><a href="about.html" data-magnetic>About</a></li>
+      <li><a href="contact.html" class="current" data-magnetic>Contact</a></li>
+      <li><a href="resume.html" data-magnetic>Resume</a></li>
     </ul>
   </nav>
 </header>
 
 <section class="page-hero wrap-narrow">
-  <p class="eyebrow">Contact</p>
+  <p class="eyebrow reveal">Contact</p>
   <h1 class="page-title">Let's talk about your project.</h1>
-  <p class="page-lede">Whether it's a research collaboration, a design role, or just a question about one of the case studies — reach out below or email me directly.</p>
+  <p class="page-lede reveal">Whether it's a research collaboration, a design role, or just a question about one of the case studies — reach out below or email me directly.</p>
 </section>
 
 <section class="case-section wrap-narrow" style="border-bottom:none;">
-  <form class="contact-form" id="contact-form">
+  <form class="contact-form reveal" id="contact-form">
     <div class="field">
       <label for="name">Name</label>
       <input type="text" id="name" name="name" required autocomplete="name">
@@ -44,7 +45,7 @@
       <label for="message">Message</label>
       <textarea id="message" name="message" required></textarea>
     </div>
-    <button type="submit" class="submit-btn">Send message</button>
+    <button type="submit" class="submit-btn" data-magnetic>Send message</button>
     <p class="form-note">This opens your email app with the message pre-filled and addressed to <a href="mailto:nafeesak08@gmail.com" style="color:var(--accent); border-bottom:1px solid var(--accent); text-decoration:none;">nafeesak08@gmail.com</a> — nothing is sent automatically. Prefer to email directly? Use the same address any time.</p>
   </form>
 </section>
@@ -53,7 +54,7 @@
   <div class="wrap footer-row">
     <div class="footer-cta">
       <h2>Or email directly</h2>
-      <a class="email" href="mailto:nafeesak08@gmail.com">nafeesak08@gmail.com</a>
+      <a class="email" href="mailto:nafeesak08@gmail.com" data-magnetic>nafeesak08@gmail.com</a>
     </div>
     <ul class="footer-links">
       <li><a href="index.html#cases">Case studies</a></li>
@@ -76,5 +77,8 @@
   });
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="motion.js"></script>
 </body>
 </html>

@@ -7,19 +7,20 @@
 <meta name="description" content="UX researcher and designer with a background in socio-legal research. Case studies in wellbeing, AI &amp; trust, and systemic research design.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+
 <header>
   <nav class="wrap">
-    <a href="index.html" class="wordmark">N. Khan <span>/ UX research</span></a>
+    <a href="index.html" class="wordmark" data-magnetic>N. Khan <span>/ UX research</span></a>
     <ul class="navlinks">
-      <li><a href="index.html#cases" class="current">Case studies</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="resume.html">Resume</a></li>
+      <li><a href="index.html#cases" class="current" data-magnetic>Case studies</a></li>
+      <li><a href="about.html" data-magnetic>About</a></li>
+      <li><a href="contact.html" data-magnetic>Contact</a></li>
+      <li><a href="resume.html" data-magnetic>Resume</a></li>
     </ul>
   </nav>
 </header>
@@ -27,11 +28,11 @@
 <section class="hero wrap">
   <div class="hero-layout">
     <div>
-      <p class="eyebrow">UX research · socio-legal background</p>
+      <p class="eyebrow reveal">UX research · socio-legal background</p>
       <h1 class="name">Nafeesa Khan</h1>
-      <p class="role-line">UX researcher &amp; designer</p>
-      <p class="hero-sub">I translate complex systems — legal frameworks, everyday routines, policy debates — into experiences that feel clear, human, and easy to trust. Trained in law and UX design, I bring the same rigor to a usability test that I once brought to a legal brief.</p>
-      <div class="toolkit">
+      <p class="role-line reveal">UX researcher &amp; designer</p>
+      <p class="hero-sub reveal">I translate complex systems — legal frameworks, everyday routines, policy debates — into experiences that feel clear, human, and easy to trust. Trained in law and UX design, I bring the same rigor to a usability test that I once brought to a legal brief.</p>
+      <div class="toolkit reveal">
         <span>Interviews</span>
         <span>Surveys</span>
         <span>Figma</span>
@@ -40,20 +41,27 @@
         <span>Affinity mapping</span>
       </div>
     </div>
-    <div class="hero-portrait">
+    <div class="hero-portrait reveal">
       <img src="https://uxfolio-prod.s3.us-east-1.amazonaws.com/69a99e43716cae3d3aaa1291/69a99e95716cae3d3aaa36ba/4kdWnozYCdo2ToWN.jpeg" alt="Portrait of Nafeesa Khan" loading="lazy">
     </div>
   </div>
+  <div class="scroll-cue"><span class="line"></span>Scroll</div>
 </section>
 
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>UX Research</span><span>Interaction Design</span><span>Systems Thinking</span><span>Accessibility</span><span>Journey Mapping</span><span>Socio-Legal Insight</span>
+  </div>
+</div>
+
 <section class="cases wrap" id="cases">
-  <div class="section-label">
+  <div class="section-label reveal">
     <span class="num">01</span>
     <h2>Selected case studies</h2>
     <div class="rule"></div>
   </div>
-  <div class="case-grid">
-    <a class="case-card" href="case-zenith.html">
+  <div class="case-grid" data-stagger-group>
+    <a class="case-card" href="case-zenith.html" data-cursor="View case">
       <div class="case-cover">
         <span class="cover-num">CASE 01</span>
         <div class="cover-media">
@@ -67,7 +75,7 @@
         <span class="case-link">Read the case study →</span>
       </div>
     </a>
-    <a class="case-card" href="case-upnxxt.html">
+    <a class="case-card" href="case-upnxxt.html" data-cursor="View case">
       <div class="case-cover">
         <span class="cover-num">CASE 02</span>
         <div class="cover-media wide">
@@ -84,7 +92,7 @@
         <span class="case-link">Read the case study →</span>
       </div>
     </a>
-    <a class="case-card" href="case-dignity.html">
+    <a class="case-card" href="case-dignity.html" data-cursor="View case">
       <div class="case-cover">
         <span class="cover-num">CASE 03</span>
         <div class="cover-media wide">
@@ -106,11 +114,11 @@
 
 <section class="about-teaser wrap" id="about">
   <div class="about-grid">
-    <blockquote>My legal training taught me to analyze complex information, uncover meaningful insights, and communicate findings clearly.</blockquote>
-    <div class="about-copy">
+    <blockquote class="reveal">My legal training taught me to analyze complex information, uncover meaningful insights, and communicate findings clearly.</blockquote>
+    <div class="about-copy reveal">
       <p>I'm a UX researcher with experience in UX design and a background in socio-legal research. Outside of product work, I write — occasionally publishing on legal and policy topics, alongside creative writing and poetry.</p>
       <p>I'm drawn to research that helps turn complex systems and ideas into experiences that feel intuitive and human.</p>
-      <a class="case-link" href="about.html">More about me →</a>
+      <a class="case-link" href="about.html" data-magnetic>More about me →</a>
     </div>
   </div>
 </section>
@@ -119,7 +127,7 @@
   <div class="wrap footer-row">
     <div class="footer-cta">
       <h2>Let's connect</h2>
-      <a class="email" href="mailto:nafeesak08@gmail.com">nafeesak08@gmail.com</a>
+      <a class="email" href="mailto:nafeesak08@gmail.com" data-magnetic>nafeesak08@gmail.com</a>
     </div>
     <ul class="footer-links">
       <li><a href="index.html#cases">Case studies</a></li>
@@ -129,5 +137,8 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="motion.js"></script>
 </body>
 </html>
