@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design research for dignity — concept exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F0F1EA;
+    --surface:#FFFFFF;
+    --ink:#1B1F2A;
+    --ink-soft:#565C54;
+    --accent:#3E5C45;
+    --warm:#B8863C;
+    --warm-bg:#F7EEDD;
+    --rule:#DBD8CC;
+    --wire:#9A968A;
+    --wire-fill:#EFEDE6;
+    --font-display:'Fraunces', serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--font-body); line-height:1.6; padding:56px 40px 80px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px; margin:0 auto;}
+
+  .case-tag{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em;
+    color:var(--accent); margin-bottom:18px;
+  }
+  h1{
+    font-family:var(--font-display); font-weight:500;
+    font-size:clamp(28px,4vw,38px); line-height:1.2; margin:0 0 16px; max-width:680px;
+  }
+  .intro{max-width:620px; color:var(--ink-soft); font-size:15.5px; margin:0 0 20px;}
+  .status-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.06em;
+    color:var(--warm); background:var(--warm-bg);
+    border:1px solid #E4D3AC; border-radius:20px; padding:7px 14px 7px 12px;
+    margin-bottom:48px;
+  }
+  .status-pill::before{content:"●"; font-size:8px;}
+
+  .flow{display:flex; gap:28px; flex-wrap:wrap; align-items:flex-start;}
+  .step{width:320px; display:flex; flex-direction:column;}
+  .step-head{display:flex; align-items:baseline; gap:10px; margin-bottom:14px;}
+  .step-num{font-family:var(--font-mono); font-size:12px; color:var(--warm); letter-spacing:0.05em;}
+  .step-title{font-family:var(--font-display); font-weight:500; font-size:19px;}
+
+  .device{
+    background:var(--surface);
+    border:1.5px solid var(--wire);
+    border-radius:14px;
+    padding:14px;
+    position:relative;
+  }
+  .device::before{
+    content:""; position:absolute; top:7px; left:50%; transform:translateX(-50%);
+    width:34px; height:4px; border-radius:2px; background:var(--wire);
+    opacity:.55;
+  }
+  .screen{margin-top:16px;}
+  .bar{height:9px; border-radius:3px; background:var(--wire-fill); border:1px solid var(--rule);}
+  .bar.w-60{width:60%;} .bar.w-40{width:40%;} .bar.w-80{width:80%;} .bar.w-50{width:50%;}
+  .scr-head{font-family:var(--font-body); font-weight:500; font-size:13.5px; color:var(--ink); margin-bottom:12px;}
+
+  .block{
+    border:1px dashed var(--wire); border-radius:8px; padding:10px 12px; margin-bottom:10px;
+    background:var(--wire-fill);
+  }
+  .block .label{font-family:var(--font-mono); font-size:10px; color:var(--ink-soft); letter-spacing:.04em; margin-bottom:6px; display:block;}
+  .row{display:flex; justify-content:space-between; align-items:center; gap:8px;}
+  .chip{
+    font-family:var(--font-mono); font-size:10px; padding:3px 8px; border-radius:10px;
+    border:1px solid var(--rule); color:var(--ink-soft); white-space:nowrap;
+  }
+  .chip.open{color:var(--accent); border-color:var(--accent);}
+  .list-item{display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid var(--rule); font-size:12.5px;}
+  .list-item:last-child{border-bottom:none;}
+  .list-item .dot{width:6px; height:6px; border-radius:50%; background:var(--wire); display:inline-block; margin-right:8px;}
+  .list-item.done .dot{background:var(--accent);}
+  .cta{
+    margin-top:6px; text-align:center; font-family:var(--font-mono); font-size:11px;
+    letter-spacing:.04em; color:var(--surface); background:var(--ink);
+    border-radius:6px; padding:9px; opacity:.88;
+  }
+
+  .caption{
+    font-size:12.5px; color:var(--ink-soft); margin-top:14px; padding-top:12px;
+    border-top:1px solid var(--rule);
+  }
+  .caption b{color:var(--ink); font-weight:500;}
+
+  @media (max-width:720px){
+    body{padding:40px 20px 60px;}
+    .step{width:100%;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="case-tag">CASE 03 — CONCEPT EXPLORATION</p>
+  <h1>Translating the research into a first, rough shape</h1>
+  <p class="intro">Three touchpoints below map directly to the opportunity areas identified through interviews, surveys, and community-informed research — a starting point for future co-design, not a finished product.</p>
+  <p class="status-pill">Concept sketch · based on research findings · not yet validated with users</p>
+
+  <div class="flow">
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">01</span><span class="step-title">Create your profile</span></div>
+      <div class="device">
+        <div class="screen">
+          <p class="scr-head">Your program status</p>
+          <div class="block">
+            <span class="label">CURRENT CLASSIFICATION</span>
+            <div class="row"><span class="bar w-60"></span><span class="chip">What this means →</span></div>
+          </div>
+          <div class="block">
+            <span class="label">PROGRAMS YOU MAY QUALIFY FOR</span>
+            <div class="list-item done"><span><span class="dot"></span>Cultural programming</span><span class="chip open">Eligible</span></div>
+            <div class="list-item"><span><span class="dot"></span>Work release track</span><span class="chip">In review</span></div>
+            <div class="list-item"><span><span class="dot"></span>Family visitation +</span><span class="chip">Locked</span></div>
+          </div>
+          <div class="cta">Ask about your classification</div>
+        </div>
+      </div>
+      <p class="caption"><b>Responds to:</b> classification decisions feel opaque and hard to challenge — this makes the criteria and status visible, with a clear path to ask questions.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">02</span><span class="step-title">Healing resources</span></div>
+      <div class="device">
+        <div class="screen">
+          <p class="scr-head">Healing &amp; culture</p>
+          <div class="row" style="margin-bottom:10px; gap:6px;">
+            <span class="chip open">Elders</span><span class="chip">Ceremony</span><span class="chip">Counselling</span><span class="chip">Land-based</span>
+          </div>
+          <div class="block">
+            <span class="label">AVAILABLE THIS WEEK</span>
+            <div class="list-item done"><span><span class="dot"></span>Talking circle — Tues</span><span class="chip open">Open</span></div>
+            <div class="list-item"><span><span class="dot"></span>Elder mentorship</span><span class="chip">Waitlist</span></div>
+          </div>
+          <div class="block">
+            <span class="label">PRIVACY</span>
+            <div class="bar w-80"></div>
+          </div>
+          <div class="cta">Request a connection, privately</div>
+        </div>
+      </div>
+      <p class="caption"><b>Responds to:</b> healing access depends on inconsistent availability and gatekeeping — this surfaces what exists and lets women request support on their own terms.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">03</span><span class="step-title">Reintegration planning</span></div>
+      <div class="device">
+        <div class="screen">
+          <p class="scr-head">Your reintegration roadmap</p>
+          <div class="block">
+            <div class="list-item done"><span><span class="dot"></span>Identification &amp; documents</span><span class="chip open">Done</span></div>
+            <div class="list-item done"><span><span class="dot"></span>Housing options nearby</span><span class="chip open">In progress</span></div>
+            <div class="list-item"><span><span class="dot"></span>Community &amp; family support</span><span class="chip">Upcoming</span></div>
+            <div class="list-item"><span><span class="dot"></span>Ongoing healing access</span><span class="chip">Upcoming</span></div>
+          </div>
+          <div class="block">
+            <span class="label">LOCAL SERVICES NEAR YOU</span>
+            <div class="bar w-50" style="margin-bottom:6px;"></div>
+            <div class="bar w-40"></div>
+          </div>
+          <div class="cta">Talk to your case worker</div>
+        </div>
+      </div>
+      <p class="caption"><b>Responds to:</b> reintegration support breaks down at handoffs between systems — one continuous roadmap instead of scattered, disconnected steps.</p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

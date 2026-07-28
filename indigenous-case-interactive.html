@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design research for dignity — interactive concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F0F1EA; --surface:#FFFFFF; --ink:#1B1F2A; --ink-soft:#565C54;
+    --accent:#3E5C45; --warm:#B8863C; --warm-bg:#F7EEDD; --rule:#DBD8CC;
+    --wire:#9A968A; --wire-fill:#EFEDE6;
+    --font-display:'Fraunces', serif; --font-body:'Inter', sans-serif; --font-mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); line-height:1.6; padding:56px 40px 80px; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:920px; margin:0 auto;}
+  .case-tag{font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; color:var(--accent); margin-bottom:18px;}
+  h1{font-family:var(--font-display); font-weight:500; font-size:clamp(26px,4vw,34px); line-height:1.2; margin:0 0 14px; max-width:640px;}
+  .intro{max-width:600px; color:var(--ink-soft); font-size:15px; margin:0 0 32px;}
+
+  .prototype{max-width:420px; margin:0 auto;}
+  .badge{
+    display:flex; align-items:center; gap:8px; justify-content:center;
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.05em;
+    color:var(--warm); background:var(--warm-bg); border:1px solid #E4D3AC;
+    border-radius:20px; padding:6px 14px; margin:0 0 14px; text-align:center;
+  }
+  .badge::before{content:"●"; font-size:7px;}
+
+  .device{background:var(--surface); border:1.5px solid var(--wire); border-radius:18px; padding:14px; position:relative;}
+  .device::before{content:""; position:absolute; top:7px; left:50%; transform:translateX(-50%); width:34px; height:4px; border-radius:2px; background:var(--wire); opacity:.55;}
+
+  .tabs{display:flex; gap:4px; margin:14px 0 16px; background:var(--wire-fill); border-radius:9px; padding:4px;}
+  .tab{
+    flex:1; text-align:center; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.02em;
+    padding:8px 4px; border-radius:6px; cursor:pointer; color:var(--ink-soft); border:none; background:none;
+    transition:background .15s ease, color .15s ease;
+  }
+  .tab.active{background:var(--surface); color:var(--ink); box-shadow:0 1px 2px rgba(0,0,0,.06);}
+
+  .screen{display:none; animation:fade .25s ease;}
+  .screen.active{display:block;}
+  @keyframes fade{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+
+  .scr-head{font-weight:500; font-size:14px; margin:0 0 12px;}
+  .block{border:1px dashed var(--wire); border-radius:8px; padding:10px 12px; margin-bottom:10px; background:var(--wire-fill);}
+  .label{font-family:var(--font-mono); font-size:10px; color:var(--ink-soft); letter-spacing:.04em; margin-bottom:6px; display:block;}
+  .row{display:flex; justify-content:space-between; align-items:center; gap:8px;}
+  .bar{height:9px; border-radius:3px; background:#e2dfd4; border:1px solid var(--rule); flex:1;}
+
+  .expand-btn{
+    font-family:var(--font-mono); font-size:10px; color:var(--accent); background:none; border:none;
+    cursor:pointer; padding:0; text-align:right;
+  }
+  .expand-text{
+    font-size:12px; color:var(--ink-soft); margin-top:8px; padding-top:8px; border-top:1px solid var(--rule);
+    display:none;
+  }
+  .expand-text.open{display:block;}
+
+  .chip{
+    font-family:var(--font-mono); font-size:10px; padding:4px 10px; border-radius:10px;
+    border:1px solid var(--rule); color:var(--ink-soft); white-space:nowrap; cursor:pointer;
+    background:var(--surface); transition:.15s ease;
+  }
+  .chip.active{color:var(--surface); background:var(--accent); border-color:var(--accent);}
+
+  .list-item{display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid var(--rule); font-size:12.5px; cursor:pointer;}
+  .list-item:last-child{border-bottom:none;}
+  .dot{width:6px; height:6px; border-radius:50%; background:var(--wire); display:inline-block; margin-right:8px;}
+  .list-item.done .dot{background:var(--accent);}
+  .status-chip{font-family:var(--font-mono); font-size:9.5px; padding:2px 8px; border-radius:9px; border:1px solid var(--rule); color:var(--ink-soft);}
+  .status-chip.done{color:var(--accent); border-color:var(--accent);}
+
+  .cta{margin-top:4px; text-align:center; font-family:var(--font-mono); font-size:11px; letter-spacing:.04em; color:var(--surface); background:var(--ink); border-radius:6px; padding:10px; cursor:pointer; opacity:.9; transition:opacity .15s ease;}
+  .cta:hover{opacity:1;}
+  .confirm{font-family:var(--font-mono); font-size:10.5px; color:var(--accent); text-align:center; margin-top:8px; display:none;}
+  .confirm.show{display:block;}
+
+  .caption{font-size:12px; color:var(--ink-soft); margin-top:16px; text-align:center; max-width:420px; margin-left:auto; margin-right:auto;}
+  .caption b{color:var(--ink); font-weight:500;}
+
+  @media (max-width:520px){ body{padding:36px 16px 56px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="case-tag">CASE 03 — INTERACTIVE CONCEPT</p>
+  <h1>Click through the three touchpoints from the research</h1>
+  <p class="intro">Same three opportunity areas as the wireframes — now connected, so you can navigate them the way a viewer would move through a real prototype.</p>
+
+  <div class="prototype">
+    <p class="badge">Concept exploration · not yet validated with users</p>
+    <div class="device">
+      <div class="tabs">
+        <button class="tab active" data-tab="0">01 · Profile</button>
+        <button class="tab" data-tab="1">02 · Healing</button>
+        <button class="tab" data-tab="2">03 · Reintegration</button>
+      </div>
+
+      <div class="screen active" data-screen="0">
+        <p class="scr-head">Your program status</p>
+        <div class="block">
+          <span class="label">CURRENT CLASSIFICATION</span>
+          <div class="row"><span class="bar"></span><button class="expand-btn" onclick="this.nextElementSibling.classList.toggle('open')">What this means →</button></div>
+          <p class="expand-text">Your classification affects which programs and visits you can access. This explains the criteria in plain language and what would need to change to move levels.</p>
+        </div>
+        <div class="block">
+          <span class="label">PROGRAMS YOU MAY QUALIFY FOR</span>
+          <div class="list-item done"><span><span class="dot"></span>Cultural programming</span><span class="status-chip done">Eligible</span></div>
+          <div class="list-item"><span><span class="dot"></span>Work release track</span><span class="status-chip">In review</span></div>
+          <div class="list-item"><span><span class="dot"></span>Family visitation +</span><span class="status-chip">Locked</span></div>
+        </div>
+        <div class="cta" onclick="showConfirm(0)">Ask about your classification</div>
+        <p class="confirm" id="confirm-0">Question sent — a case worker will follow up.</p>
+      </div>
+
+      <div class="screen" data-screen="1">
+        <p class="scr-head">Healing &amp; culture</p>
+        <div class="row" style="margin-bottom:12px; gap:6px; flex-wrap:wrap;">
+          <span class="chip active" onclick="selectChip(this)">Elders</span>
+          <span class="chip" onclick="selectChip(this)">Ceremony</span>
+          <span class="chip" onclick="selectChip(this)">Counselling</span>
+          <span class="chip" onclick="selectChip(this)">Land-based</span>
+        </div>
+        <div class="block">
+          <span class="label">AVAILABLE THIS WEEK</span>
+          <div class="list-item done"><span><span class="dot"></span>Talking circle — Tues</span><span class="status-chip done">Open</span></div>
+          <div class="list-item"><span><span class="dot"></span>Elder mentorship</span><span class="status-chip">Waitlist</span></div>
+        </div>
+        <div class="cta" onclick="showConfirm(1)">Request a connection, privately</div>
+        <p class="confirm" id="confirm-1">Sent privately — only you and the elder coordinator see this.</p>
+      </div>
+
+      <div class="screen" data-screen="2">
+        <p class="scr-head">Your reintegration roadmap</p>
+        <div class="block">
+          <div class="list-item done" onclick="cycleStatus(this)"><span><span class="dot"></span>Identification &amp; documents</span><span class="status-chip done">Done</span></div>
+          <div class="list-item done" onclick="cycleStatus(this)"><span><span class="dot"></span>Housing options nearby</span><span class="status-chip done">In progress</span></div>
+          <div class="list-item" onclick="cycleStatus(this)"><span><span class="dot"></span>Community &amp; family support</span><span class="status-chip">Upcoming</span></div>
+          <div class="list-item" onclick="cycleStatus(this)"><span><span class="dot"></span>Ongoing healing access</span><span class="status-chip">Upcoming</span></div>
+        </div>
+        <p style="font-size:11px; color:var(--ink-soft); text-align:center; margin:-2px 0 12px;">Tap a step to preview how status updates would look</p>
+        <div class="cta" onclick="showConfirm(2)">Talk to your case worker</div>
+        <p class="confirm" id="confirm-2">Message sent to your assigned case worker.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="caption"><b>Note:</b> this prototype demonstrates the design thinking behind the research — it hasn't been co-designed or tested with Indigenous women or community partners, which the original research identified as the necessary next step.</p>
+</div>
+
+<script>
+  document.querySelectorAll('.tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var i = this.dataset.tab;
+      document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+      document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});
+      this.classList.add('active');
+      document.querySelector('.screen[data-screen="'+i+'"]').classList.add('active');
+    });
+  });
+  function selectChip(el){
+    el.parentElement.querySelectorAll('.chip').forEach(function(c){c.classList.remove('active');});
+    el.classList.add('active');
+  }
+  function cycleStatus(el){
+    var chip = el.querySelector('.status-chip');
+    var states = ['Upcoming','In progress','Done'];
+    var i = states.indexOf(chip.textContent);
+    var next = states[(i+1) % states.length];
+    chip.textContent = next;
+    chip.classList.toggle('done', next === 'Done' || next === 'In progress');
+    el.classList.toggle('done', next === 'Done' || next === 'In progress');
+  }
+  function showConfirm(i){
+    var el = document.getElementById('confirm-'+i);
+    el.classList.add('show');
+    setTimeout(function(){ el.classList.remove('show'); }, 3500);
+  }
+</script>
+</body>
+</html>
