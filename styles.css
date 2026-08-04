@@ -392,6 +392,11 @@ footer .email{
 .resume-actions{ display:flex; gap:16px; margin-top:32px; flex-wrap:wrap; }
 .resume-embed{ border:1px solid var(--rule); border-radius:10px; overflow:hidden; height:840px; box-shadow:0 30px 70px -30px rgba(17,19,16,.25); }
 .resume-embed iframe{ width:100%; height:100%; border:none; }
+.resume-embed-note{ display:none; }
+
+/* Mobile fallback for embedded iframes (Figma prototypes / inline PDFs render
+   unreadably small or blank on phone browsers) */
+.embed-mobile-note{ display:none; }
 
 /* v1 compare banner */
 .v2-banner{
@@ -420,4 +425,26 @@ footer .email{
   .wrap, .wrap-narrow{ padding:0 22px; }
   header nav{ padding:18px 22px; }
   .resume-embed{ height:560px; }
+
+  /* Scroll cue was absolutely positioned to the bottom of .hero, which landed
+     it on top of the portrait photo once the layout collapsed to one column.
+     Drop it into normal flow below the stacked content instead. */
+  .scroll-cue{ position:static; left:auto; bottom:auto; margin:28px 0 0; }
+
+  /* Figma prototype iframes and inline PDF viewers don't render usably on
+     phone browsers (blank embeds / illegibly small text) — hide them and
+     point people to the buttons that already exist for opening the file. */
+  .embed-frame:has(iframe[src*="figma.com"]){ display:none; }
+  .embed-mobile-note{ display:block; text-align:center; font-size:14px; color:var(--ink-soft); line-height:1.6; max-width:440px; margin:0 auto; }
+  .resume-embed{ display:none; }
+  .resume-embed-note{ display:block; text-align:center; font-size:14px; color:var(--ink-soft); line-height:1.6; margin-top:8px; }
+}
+
+/* Narrow phones: shorten the wordmark and let nav wrap instead of crowding
+   against the logo (this is what read as "headings overlapping the name"). */
+@media (max-width:480px){
+  header nav{ flex-wrap:wrap; row-gap:10px; padding:16px 18px; }
+  .wordmark span{ display:none; }
+  .navlinks{ gap:16px; }
+  .navlinks li a{ font-size:13px; }
 }
